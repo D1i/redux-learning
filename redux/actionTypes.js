@@ -1,0 +1,5 @@
+export const actionTypes = {
+    INPUT_VALUE_CHANGE: "INPUT_VALUE_CHANGE",
+    REPOS_LIST_ADD: "REPOS_LIST_ADD",
+    REPOS_LIST_CLEAR: "REPOS_LIST_CLEAR",
+};
