@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { actionTypes } from "../../../../redux/actionTypes";
-import ButtonControlADD from "./ButtonControlADD";
 import store from "../../../../redux/storeRedux";
+import ButtonControlADDOfConnection from "./ButtonControlADD";
+import ButtonControlCLEAROfConnection from "./ButtonControlCLEAR";
 
 store.dispatch({type: actionTypes.INIT_URL_LIST});
 
@@ -15,8 +16,11 @@ const mapDispatchToPropsOfADD = {
     })
 };
 
-function mapStateToProps(state) {
-    return state;
-}
+const mapDispatchToPropsOfCLEAR = {
+    handleClickCLEAR: () => ({
+        type: actionTypes.REPOS_LIST_CLEAR,
+    }),
+};
 
-export default connect(mapStateToProps, mapDispatchToPropsOfADD)(ButtonControlADD);
+export const ButtonControlADD = connect(undefined, mapDispatchToPropsOfADD)(ButtonControlADDOfConnection);
+export const ButtonControlCLEAR = connect(undefined, mapDispatchToPropsOfCLEAR)(ButtonControlCLEAROfConnection);

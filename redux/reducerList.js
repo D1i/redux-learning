@@ -1,6 +1,8 @@
 import { actionTypes } from "./actionTypes";
 
-export const inputStatus = (state = {}, action) => {
+export const inputStatus = (state = {
+    value: "",
+}, action) => {
     switch (action.type) {
         case actionTypes.INPUT_VALUE_CHANGE:
             return {
@@ -11,11 +13,6 @@ export const inputStatus = (state = {}, action) => {
             return {
                 ...state,
                 value: ""
-            };
-        case actionTypes.TEST_VALUE:
-            return{
-                ...state,
-                testValue: "__TEST__"
             };
         default:
             return {
@@ -31,6 +28,8 @@ export const URLReposList = (state = {}, action) => {
                 ...state,
                 action.payload,
             ];
+        case actionTypes.REPOS_LIST_CLEAR:
+            return [];
         case actionTypes.INIT_URL_LIST:
             return []
         ;

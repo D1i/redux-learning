@@ -9,4 +9,8 @@ const mapDispatchToProps = {
     })
 };
 
-export default connect(undefined, mapDispatchToProps)(Input);
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Input);

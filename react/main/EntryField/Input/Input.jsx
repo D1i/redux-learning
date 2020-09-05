@@ -6,6 +6,7 @@ function Input(props) {
                 type="text"
                 onChange={props.handleChange}
                 placeholder="Пользователь/Репозиторий"
+                value={props.inputStatus.value}
             />
         )
 }

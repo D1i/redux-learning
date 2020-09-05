@@ -1,18 +1,13 @@
 import React from "react";
-import store from "../../../../redux/storeRedux"
 
-class ButtonControlADD extends React.Component {
-    render() {
-        console.log(store.getState().inputStatus.value);
-        return (
-            <button onClick={() => {
-                this.props.handleClickADD();
-                this.props.handleClickADDClearInput();
-            }}
-                    value={this.props.inputStatus.value}//Почему не перерисовывается ?
-            >ADD</button>
-        )
-    }
+function ButtonControlADDOfConnection(props) {
+    return (
+        <button onClick={() => {
+            props.handleClickADD();
+            props.handleClickADDClearInput();
+        }}
+        >ADD</button>
+    )
 }
 
-export default ButtonControlADD;
+export default ButtonControlADDOfConnection;
