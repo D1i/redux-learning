@@ -6,9 +6,9 @@ function RepostList(props) {
     })
         .reverse();
     return (
-        <ul>
+        <ol>
             {list}
-        </ul>
+        </ol>
     )
 }
 

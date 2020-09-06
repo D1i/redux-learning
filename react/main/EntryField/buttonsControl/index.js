@@ -5,8 +5,6 @@ import ButtonControlADDOfConnection from "./ButtonControlADD";
 import ButtonControlCLEAROfConnection from "./ButtonControlCLEAR";
 import pseudoAPIRequest from "../../../../services/pseudoAPIResponse"
 
-store.dispatch({type: actionTypes.INIT_URL_LIST});
-
 const mapDispatchToPropsOfADD = {
     handleClickADD: () => {
         if (store.getState().inputStatus.value.length < 3) {
@@ -18,12 +16,15 @@ const mapDispatchToPropsOfADD = {
         type: actionTypes.REPOS_LIST_ADD,
         payload: {
             URL: store.getState().inputStatus.value,
-            forks: pseudoAPIRequest.forks,
-            subscribers_count: pseudoAPIRequest.subscribers_count
+            forks: pseudoAPIRequest().forks,
+            subscribers_count: pseudoAPIRequest().subscribers_count
         }
     }},
     handleClickADDClearInput: () => ({
         type: actionTypes.INPUT_VALUE_CLEAR,
+    }),
+    handleClickADDSortedRepos: () => ({
+        type: actionTypes.SORTING_LIST_BY_FORKS
     })
 };
 
