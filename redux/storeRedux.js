@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from "redux";
-import { inputStatus, URLReposList } from "./reducerList";
+import { inputStatus, URLReposList, sortBy } from "./reducerList";
 
 const store = createStore(
-    combineReducers({inputStatus, URLReposList})
+    combineReducers({inputStatus, URLReposList, sortBy})
 );
 
 setInterval(() => {console.log(store.getState())}, 1000);

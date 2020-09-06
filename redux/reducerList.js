@@ -37,7 +37,6 @@ export const URLReposList = (state = [], action) => {
             return state.map(v => v).sort((a, b) => {
                 if (a.forks > b.forks) {
                     return 1;
-                    debugger
                 }
                 if (a.forks < b.forks) {
                     return -1;
@@ -46,7 +45,33 @@ export const URLReposList = (state = [], action) => {
                 return 0;
             })
         ;
+        case actionTypes.SORTING_LIST_BY_SUBSCRIBERS_COUNT:
+            return state.map(v => v).sort((a, b) => {
+                if (a.subscribers_count > b.subscribers_count) {
+                    return 1;
+                }
+                if (a.subscribers_count < b.subscribers_count) {
+                    return -1;
+                }
+
+                return 0;
+            })
+        ;
         default:
             return state;
+    }
+};
+
+export const sortBy = (state = actionTypes.SORTING_LIST_BY_FORKS, action) => {
+    switch (action.type) {
+        case actionTypes.SORTING_LIST_BY_FORKS:
+            return actionTypes.SORTING_LIST_BY_FORKS
+                ;
+        case actionTypes.SORTING_LIST_BY_SUBSCRIBERS_COUNT:
+            return actionTypes.SORTING_LIST_BY_SUBSCRIBERS_COUNT
+                ;
+        default :
+            return state
+                ;
     }
 };

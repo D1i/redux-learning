@@ -8,7 +8,7 @@
     height: 200px;
     margin: 10px;
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
 }
 
 .ratingColumnURL {
