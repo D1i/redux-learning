@@ -1,12 +1,13 @@
 import React from "react";
 import EntryField from "./EntryField/EntryField";
 import store from "../../redux/storeRedux"
+import ReposList from "./ReposList/index";
 
 function Main(props) {
         return (
             <main>
                 <EntryField />
-                {/*<ReposListUl />*/}
+                <ReposList />
             </main>
         )
 }

@@ -26,7 +26,7 @@ export const URLReposList = (state = {}, action) => {
         case actionTypes.REPOS_LIST_ADD:
             return [
                 ...state,
-                action.payload,
+                {URL: action.payload},
             ];
         case actionTypes.REPOS_LIST_CLEAR:
             return [];
