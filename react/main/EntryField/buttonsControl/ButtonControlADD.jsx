@@ -5,7 +5,8 @@ function ButtonControlADDOfConnection(props) {
         <button onClick={() => {
             if (props.handleClickADD().type !== "INTRODUCED_NOT_CORRECT_DATA") {
                 props.handleClickADDClearInput();
-                props.handleClickADDSortedRepos();
+                props.handleClickADDSortedRepos();//ПЕРЕДЕЛАТЬ
+                //компоненты не должны знать про редакс ничего
             }
         }}
         >ADD</button>
