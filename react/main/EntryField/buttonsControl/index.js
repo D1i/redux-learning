@@ -7,10 +7,16 @@ import ButtonControlCLEAROfConnection from "./ButtonControlCLEAR";
 store.dispatch({type: actionTypes.INIT_URL_LIST});
 
 const mapDispatchToPropsOfADD = {
-    handleClickADD: () => ({
+    handleClickADD: () => {
+        if (store.getState().inputStatus.value.length < 3) {
+            return {};
+        } else if (store.getState().inputStatus.value.search("/") === -1) {
+            return {};
+        }
+        return {
         type: actionTypes.REPOS_LIST_ADD,
         payload: store.getState().inputStatus.value
-    }),
+    }},
     handleClickADDClearInput: () => ({
         type: actionTypes.INPUT_VALUE_CLEAR,
     })
