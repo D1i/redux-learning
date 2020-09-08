@@ -1,7 +1,7 @@
 import React from "react";
 
-function RepostList(props) {
-    const list = props.URLReposList.map((value, item) => {
+function ReposList(props) {
+    const list = props.reposList.map((value, item) => {
         return <li key={value.URL + "-" + item}>{value.URL}</li>
     })
         .reverse();
@@ -12,4 +12,4 @@ function RepostList(props) {
     )
 }
 
-export default RepostList;
+export default ReposList;

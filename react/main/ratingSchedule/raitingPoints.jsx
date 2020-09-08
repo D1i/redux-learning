@@ -6,16 +6,16 @@ import store from "../../../redux/storeRedux";
 function RatingPoints(props) {
 
 
-    let list = props.state.URLReposList.map((value, item) => {
+    let list = props.reposList.map((value, item) => {
         let heightRating = null;
         if (store.getState().sortBy === actionTypes.SORTING_LIST_BY_FORKS) {
-            heightRating = props.state.URLReposList[props.state.URLReposList.length - 1] === undefined
+            heightRating = props.reposList[props.reposList.length - 1] === undefined
                 ? 100
-                : value.forks / (props.state.URLReposList[props.state.URLReposList.length - 1].forks / 100);
+                : value.forks / (props.reposList[props.reposList.length - 1].forks / 100);
         } else if (store.getState().sortBy === actionTypes.SORTING_LIST_BY_SUBSCRIBERS_COUNT) {
-            heightRating = props.state.URLReposList[props.state.URLReposList.length - 1] === undefined
+            heightRating = props.reposList[props.reposList.length - 1] === undefined
                 ? 100
-                : value.subscribers_count / (props.state.URLReposList[props.state.URLReposList.length - 1].subscribers_count / 100);
+                : value.subscribers_count / (props.reposList[props.reposList.length - 1].subscribers_count / 100);
         }
         return (
             <div key={value.URL + item} className={style.ratingColumn}>

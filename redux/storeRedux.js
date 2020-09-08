@@ -1,10 +1,10 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import { inputStatus, URLReposList, sortBy } from "./reducerList";
 
 const store = createStore(
-    combineReducers({inputStatus, URLReposList, sortBy})
+  combineReducers({inputStatus, URLReposList, sortBy}),
+  applyMiddleware(thunk)
 );
-
-setInterval(() => {console.log(store.getState())}, 1000);
 
 export default store;

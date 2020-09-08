@@ -1,5 +1,5 @@
 import React from "react";
-import EntryField from "./EntryField/EntryField";
+import EntryField from "./EntryField/index";
 import store from "../../redux/storeRedux"
 import ReposList from "./ReposList/index";
 import RatingPoints from "./ratingSchedule/index";

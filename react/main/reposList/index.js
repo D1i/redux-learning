@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import RepostList from "./ReposList";
+import ReposList from "./ReposList";
 
 function mapStateToProps(state) {
-    return state;
+    return {reposList: state.URLReposList};
 }
 
-export default connect(mapStateToProps, undefined)(RepostList);
+export default connect(mapStateToProps, undefined)(ReposList);

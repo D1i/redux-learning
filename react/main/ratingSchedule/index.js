@@ -1,13 +1,8 @@
 import { connect } from "react-redux";
-import { actionTypes } from "../../../redux/actionTypes";
-import store from "../../../redux/storeRedux";
 import RatingPoints from "./raitingPoints";
 
-// const mapDispatchToProps = {
-// };
-
 function mapStateToProps(state) {
-    return {state};
+    return {reposList: state.URLReposList};
 }
 
 export default connect(mapStateToProps, undefined)(RatingPoints);
