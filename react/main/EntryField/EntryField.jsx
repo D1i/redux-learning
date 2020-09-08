@@ -19,6 +19,7 @@ state = {
     handlerResponse(this.state.inputValue);
     this.setState({inputValue: ""});
   };
+
   handleCLEAR = () => {
     this.setState({inputValue: ""});
     this.props.CLEAR_repos();
