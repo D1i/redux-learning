@@ -11,9 +11,6 @@ const mapDispatchToProps = {
     CLEAR_repos: () => ({
       type: actionTypes.REPOS_LIST_CLEAR,
     }),
-    SORTING_repos_list: sortBy => ({
-      type: sortBy
-    }),
 };
 
 export default connect(undefined, mapDispatchToProps)(EntryField);
