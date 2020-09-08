@@ -12,10 +12,8 @@ export const URLReposList = (state = [], action) => {
               },
             ];
         case actionTypes.REPOS_LIST_CLEAR:
-            return [];
-        case actionTypes.INIT_URL_LIST:
             return []
-        ;
+              ;
         case actionTypes.SORTING_LIST_BY_FORKS:
             return state.map(v => v).sort((a, b) => {
                 if (a.forks > b.forks) {
