@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "./Input";
 import Button from "./button";
-import request from "../../../services/APIRequest";
+import handlerResponse from "../../../services/handlerResponse";
 
 class EntryField extends React.Component {
 state = {
@@ -16,7 +16,7 @@ state = {
         this.state.inputValue.search("/") === -1) {
       return
     }
-    request(this.state.inputValue);
+    handlerResponse(this.state.inputValue);
     this.setState({inputValue: ""});
   };
   handleCLEAR = () => {
