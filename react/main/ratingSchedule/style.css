@@ -19,5 +19,7 @@
     width: 100%;
     background-color: blue;
     text-align: center;
-    color: #fff;
+    color: #ddd;
+    display: flex;
+    flex-direction: column;
 }

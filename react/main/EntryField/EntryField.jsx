@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "./Input";
 import Button from "./button";
-
+import request from "../../../services/APIRequest";
 
 class EntryField extends React.Component {
 state = {
@@ -12,8 +12,11 @@ state = {
   };
 
   handleADD = () => {
-    this.props.ADD_repos(this.state.inputValue);
-    this.props.SORTING_repos_list(this.props.sortBy);
+    if (this.state.inputValue.length < 3 ||
+        this.state.inputValue.search("/") === -1) {
+      return
+    }
+    request(this.state.inputValue);
     this.setState({inputValue: ""});
   };
   handleCLEAR = () => {

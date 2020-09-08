@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { inputStatus, URLReposList, sortBy } from "./reducerList";
+import { URLReposList, sortBy } from "./reducerList";
 
 const store = createStore(
-  combineReducers({inputStatus, URLReposList, sortBy}),
+  combineReducers({ URLReposList, sortBy}),
   applyMiddleware(thunk)
 );
 

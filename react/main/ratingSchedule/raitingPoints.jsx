@@ -1,5 +1,5 @@
 import React from "react";
-import {actionTypes} from "../../../redux/actionTypes";
+import { actionTypes } from "../../../redux/actionTypes";
 import style from "./style.css";
 import store from "../../../redux/storeRedux";
 
@@ -21,8 +21,9 @@ function RatingPoints(props) {
             <div key={value.URL + item} className={style.ratingColumn}>
                 <div className={style.ratingColumnValue} style=
                      {{height: heightRating + "%"}}
-                    >
-                    {value.forks}
+                    title={"forks: " + value.forks + "\n"
+                    + "subscribers_count: " + value.subscribers_count}
+                >
                     <p className={style.ratingColumnURL}>{value.URL}</p>
                 </div>
             </div>

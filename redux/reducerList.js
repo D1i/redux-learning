@@ -1,37 +1,14 @@
 import { actionTypes } from "./actionTypes";
-import pseudoResponse from "../services/pseudoAPIResponse"
-
-export const inputStatus = (state = {
-    value: "",
-}, action) => {
-    switch (action.type) {
-        case actionTypes.INPUT_VALUE_CHANGE:
-            return {
-                ...state,
-                value: action.payload
-            };
-        case actionTypes.REPOS_LIST_ADD:
-            return {
-                ...state,
-                value: ""
-            };
-        default:
-            return {
-                ...state
-            };
-    }
-};
 
 export const URLReposList = (state = [], action) => {
     switch (action.type) {
         case actionTypes.REPOS_LIST_ADD:
-            const response = pseudoResponse();
             return [
                 ...state,
               {
-                  URL: action.payload,
-                  forks: response.forks,
-                  subscribers_count: response.subscribers_count
+                  URL: action.payload.URL,
+                  forks: action.payload.forks,
+                  subscribers_count: action.payload.subscribers_count
               },
             ];
         case actionTypes.REPOS_LIST_CLEAR:

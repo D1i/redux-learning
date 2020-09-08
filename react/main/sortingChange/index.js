@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import SelectSortType from "./SelectOfCangeTypeSorting";
+import SelectSortType from "./SelectOfChangeTypeSorting";
 import { actionTypes } from "../../../redux/actionTypes";
 
 const mapDispatchToProps = {
