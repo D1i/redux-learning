@@ -18,7 +18,7 @@ class App extends React.Component {
 
 function mapGlobalStateToProps() {
     return store;
-};
+}
 
 ReactDOM.render((
     <Provider store={store}>
