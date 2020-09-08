@@ -16,8 +16,4 @@ const mapDispatchToProps = {
     }),
 };
 
-const mapStateToProps = (globalState) => {
-  return {sortBy: globalState.sortBy}
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(EntryField);
+export default connect(undefined, mapDispatchToProps)(EntryField);
