@@ -2,7 +2,7 @@ import React from "react";
 
 function ReposList(props) {
     const list = props.reposList.map((value, item) => {
-        return <li key={value.URL + "-" + item}>{value.URL}</li>
+        return <li key={value.repoName + "-" + item}>{value.repoName}</li>
     })
         .reverse();
     return (

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {actionTypes} from "../../../redux/actionTypes";
 
 function SelectSortType(props) {
@@ -9,5 +10,9 @@ function SelectSortType(props) {
         </select>
     )
 }
+
+SelectSortType.propTypes = {
+  handleChange: PropTypes.func
+};
 
 export default SelectSortType;

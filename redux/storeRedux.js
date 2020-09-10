@@ -1,10 +1,8 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import { createStore, combineReducers } from "redux";
 import { URLReposList, sortBy } from "./reducerList";
 
 const store = createStore(
-  combineReducers({ URLReposList, sortBy}),
-  applyMiddleware(thunk)
+  combineReducers({ URLReposList, sortBy})
 );
 
 export default store;

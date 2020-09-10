@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Button(props) {
 
@@ -8,5 +9,9 @@ function Button(props) {
       </button>
     )
 }
+
+Button.propTypes = {
+  handleChange: PropTypes.func
+};
 
 export default Button;
