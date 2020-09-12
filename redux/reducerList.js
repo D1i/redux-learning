@@ -1,18 +1,19 @@
 import { actionTypes } from "./actionTypes";
+import { SORTBY_FORKS, SORTBY_SUBSCRIBRES } from './constants';
 
 export const URLReposList = (state = {list: []}, action) => {
     switch (action.type) {
       case actionTypes.REPOS_LIST_ADD:
-          let copyList = state.list.map(v => v);
-          copyList.push({
-            repoName: action.payload.repoName,
-            forks: action.payload.forks,
-            subscribers_count: action.payload.subscribers_count
-          });
-
             return {
               ...state,
-              list: copyList,
+              list: [
+                  ...state.list,
+                  {
+                      repoName: action.payload.repoName,
+                      forks: action.payload.forks,
+                      subscribers_count: action.payload.subscribers_count
+                  }
+              ],
             };
         case actionTypes.REPOS_LIST_CLEAR:
             return {...state,
@@ -20,31 +21,29 @@ export const URLReposList = (state = {list: []}, action) => {
             }
               ;
         case actionTypes.SORTING_LIST_BY_FORKS:
-          copyList = state.list.map(v => v).sort((a, b) => {
-            if (a.forks > b.forks) {
-              return 1;
-            }
-            if (a.forks < b.forks) {
-              return -1;
-            }
-
-            return 0;
-          });
-
             return {
               ...state,
-              list: copyList
+              list: [...state.list].sort((a, b) => {
+                  if (a.forks > b.forks) {
+                      return -1;
+                  }
+                  if (a.forks < b.forks) {
+                      return 1;
+                  }
+
+                  return 0;
+              })
             }
         ;
         case actionTypes.SORTING_LIST_BY_SUBSCRIBERS_COUNT:
             return {
               ...state,
-              list: state.list.map(v => v).sort((a, b) => {
+              list: [...state.list].sort((a, b) => {
                 if (a.subscribers_count > b.subscribers_count) {
-                  return 1;
+                  return -1;
                 }
                 if (a.subscribers_count < b.subscribers_count) {
-                  return -1;
+                  return 1;
                 }
 
                 return 0;
@@ -56,13 +55,13 @@ export const URLReposList = (state = {list: []}, action) => {
     }
 };
 
-export const sortBy = (state = "forks", action) => {
+export const sortBy = (state = {sortingType: SORTBY_FORKS}, action) => {
     switch (action.type) {
         case actionTypes.SORTING_LIST_BY_FORKS:
-            return "forks"
+            return {sortingType: SORTBY_FORKS}
                 ;
         case actionTypes.SORTING_LIST_BY_SUBSCRIBERS_COUNT:
-            return "subscribers count"
+            return {sortingType: SORTBY_SUBSCRIBRES}
                 ;
         default :
             return state

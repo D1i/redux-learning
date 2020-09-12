@@ -1,0 +1,12 @@
+.buttonControl {
+    width: calc(50% - 5px);
+    border: none;
+    border-radius: 3px;
+    background-color: #c8c8c8;
+    outline: none;
+    color: #343434;
+}
+
+.buttonControl:active {
+    background-color: #dddddd;
+}

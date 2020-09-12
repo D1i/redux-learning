@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
 import SelectSortType from "./SelectOfChangeTypeSorting";
-import { actionTypes } from "../../../redux/actionTypes";
 
 const mapDispatchToProps = {
-    handleChange: (event) => {
+    handleChange: value => {
         return {
-            type: event.target.value
+            type: value
         }
     }
 };

@@ -1,9 +1,10 @@
 .raitingContainer {
+    height: 200px;
     display: flex;
-    background-color: #ccc;
 }
 
 .ratingColumn {
+    box-sizing: border-box;
     width: 50px;
     height: 200px;
     margin: 10px;
@@ -12,14 +13,18 @@
 }
 
 .ratingColumnURL {
-    transform: rotate(90deg);
+    width: 10px;
+    height: 10px;
+    padding: 5px;
+    display: block;
 }
 
 .ratingColumnValue {
     width: 100%;
-    background-color: blue;
-    text-align: center;
-    color: #ddd;
+    background-color: #989898;
+    color: #fcfcfc;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }

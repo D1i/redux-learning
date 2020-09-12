@@ -4,7 +4,7 @@ import RatingPoints from "./raitingPoints";
 function mapStateToProps(state) {
     return {
         reposList: state.URLReposList.list,
-        sortBy: state.sortBy
+        sortBy: state.sortBy.sortingType
     };
 }
 

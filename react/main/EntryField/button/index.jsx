@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import style from "./style";
 
 function Button(props) {
 
     return (
-      <button onClick={props.handleClick}>
+      <button className={style.buttonControl} onClick={props.handleClick}>
         {props.title}
       </button>
     )

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Input from "./Input";
 import Button from "./button";
 import asyncAddingRepositoriesInStore from "../../../services/asyncAddingRepositoriesInStore";
+import style from "./style";
 
 class EntryField extends React.Component {
 state = {
@@ -37,8 +38,10 @@ state = {
     return (
       <div>
         <Input incorrectValue={this.state.incorrectValue} handleChange={this.handleChange} value={this.state.inputValue}/>
-        <Button handleClick={this.handleADD} title="ADD" />
-        <Button handleClick={this.handleCLEAR} title="CLEAR" />
+        <div className={style.buttonContainer}>
+          <Button handleClick={this.handleADD} title="ADD" />
+          <Button handleClick={this.handleCLEAR} title="CLEAR" />
+        </div>
       </div>
     )
   }
