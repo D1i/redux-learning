@@ -7,7 +7,7 @@ const asyncAddingRepositoriesInStore = ({
 	functionToSortingReposList,
 }) => {
 	githubAPIRequest(repoName)
-		//Никак не могу понять, как перенести это в reducer
+		//Никак не могу понять, как перенести это в action creater
 		.then((info) => {
 			let forks = info.forks;
 			let subscribers_count = info.subscribers_count;
