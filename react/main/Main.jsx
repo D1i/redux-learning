@@ -6,14 +6,14 @@ import SelectSortType from "./sortingChange/index";
 import style from "./style";
 
 function Main(props) {
-        return (
-            <main className={style.main}>
-                <EntryField />
-                <SelectSortType />
-                <ReposList />
-                <RatingPoints />
-            </main>
-        )
+	return (
+		<main className={style.main}>
+			<EntryField />
+			<SelectSortType />
+			<ReposList />
+			<RatingPoints />
+		</main>
+	);
 }
 
 export default Main;
