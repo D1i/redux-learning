@@ -1,9 +1,22 @@
-import { actionTypes } from "./actionTypes";
-import { SORTBY_FORKS, SORTBY_SUBSCRIBRES } from "./constants";
+import {
+	REPOS_LIST_ADD,
+	REPOS_LIST_CLEAR,
+	SORTING_LIST,
+	SORTBY_FORKS,
+	SORTBY_SUBSCRIBRES,
+	SET_SORTING_TYPE_FORKS,
+	SET_SORTING_TYPE_SUBSCRIBERS,
+} from "./constants";
 
-export const URLReposList = (state = { list: [] }, action) => {
+const comparison = (comparisonProperty) => (a, b) =>
+	a[comparisonProperty] > b[comparisonProperty] ? -1 : 1;
+
+export const URLReposList = (
+	state = { list: [], sortingType: SORTBY_FORKS },
+	action
+) => {
 	switch (action.type) {
-		case actionTypes.REPOS_LIST_ADD:
+		case REPOS_LIST_ADD:
 			return {
 				...state,
 				list: [
@@ -15,9 +28,9 @@ export const URLReposList = (state = { list: [] }, action) => {
 					},
 				],
 			};
-		case actionTypes.REPOS_LIST_CLEAR:
+		case REPOS_LIST_CLEAR:
 			return { ...state, list: [] };
-		case actionTypes.SORTING_LIST_BY_FORKS:
+		case SORTBY_FORKS:
 			return {
 				...state,
 				list: [...state.list].sort((a, b) => {
@@ -31,7 +44,7 @@ export const URLReposList = (state = { list: [] }, action) => {
 					return 0;
 				}),
 			};
-		case actionTypes.SORTING_LIST_BY_SUBSCRIBERS_COUNT:
+		case SORTBY_SUBSCRIBRES:
 			return {
 				...state,
 				list: [...state.list].sort((a, b) => {
@@ -45,18 +58,29 @@ export const URLReposList = (state = { list: [] }, action) => {
 					return 0;
 				}),
 			};
+		case SORTING_LIST:
+			if (state.sortingType === SORTBY_FORKS) {
+				return {
+					...state,
+					list: [...state.list].sort(comparison("forks")),
+				};
+			} else {
+				return {
+					...state,
+					list: [...state.list].sort(comparison("subscribers")),
+				};
+			}
+		case SET_SORTING_TYPE_FORKS:
+			return {
+				...state,
+				sortingType: SORTBY_FORKS,
+			};
+		case SET_SORTING_TYPE_SUBSCRIBERS:
+			return {
+				...state,
+				sortingType: SORTBY_SUBSCRIBRES,
+			};
 		default:
-			return state;
-	}
-};
-
-export const sortBy = (state = { sortingType: SORTBY_FORKS }, action) => {
-	switch (action.type) {
-		case actionTypes.SORTING_LIST_BY_FORKS:
-			return { sortingType: SORTBY_FORKS };
-		case actionTypes.SORTING_LIST_BY_SUBSCRIBERS_COUNT:
-			return { sortingType: SORTBY_SUBSCRIBRES };
-		default:
-			return state;
+			return { ...state };
 	}
 };

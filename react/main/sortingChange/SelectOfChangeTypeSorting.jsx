@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { actionTypes } from "../../../redux/actionTypes";
+import {
+	SET_SORTING_TYPE_FORKS,
+	SET_SORTING_TYPE_SUBSCRIBERS,
+} from "../../../redux/constants";
 import style from "./style";
 
 function SelectSortType(props) {
@@ -11,10 +14,10 @@ function SelectSortType(props) {
 				props.handleChange(event.target.value);
 			}}
 		>
-			<option value={actionTypes.SORTING_LIST_BY_FORKS}>
+			<option value={SET_SORTING_TYPE_FORKS}>
 				Соритировка по форкам
 			</option>
-			<option value={actionTypes.SORTING_LIST_BY_SUBSCRIBERS_COUNT}>
+			<option value={SET_SORTING_TYPE_SUBSCRIBERS}>
 				Сортировка по подписчикам
 			</option>
 		</select>

@@ -1,10 +1,6 @@
 import { createStore, combineReducers } from "redux";
-import { URLReposList, sortBy } from "./reducerList";
+import { URLReposList } from "./reducerList";
 
-const store = createStore(combineReducers({ URLReposList, sortBy }));
-
-setInterval(() => {
-	console.log(store.getState());
-}, 1000);
+const store = createStore(combineReducers({ URLReposList }));
 
 export default store;

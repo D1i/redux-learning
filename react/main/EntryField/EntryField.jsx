@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Input from "./Input";
 import Button from "./button";
-import asyncAddingRepositoriesInStore from "./asyncAddingRepositoriesInStore";
 import style from "./style";
+import githubAPIRequest from "../../../services/githubAPIRequest";
 
 class EntryField extends React.Component {
 	state = {
@@ -22,14 +22,25 @@ class EntryField extends React.Component {
 			this.setState({ incorrectValue: true });
 			return;
 		}
-		asyncAddingRepositoriesInStore({
-			repoName: this.state.inputValue,
-			functionToCallToRespond: this.props.ADD_repos,
-			sortBy: this.props.sortBy,
-			functionToSortingReposList: this.props.sortingBy,
-		});
-		this.setState({ incorrectValue: false });
-		this.setState({ inputValue: "" });
+		githubAPIRequest(this.state.inputValue)
+			.then(({ forks, subscribers_count }) => {
+				let repoName = this.state.inputValue;
+				if (forks === undefined) {
+					repoName = `${repoName} | Такого репозитория не существует`;
+					forks = 0;
+					subscribers_count = 0;
+				}
+				this.props.ADD_repos({
+					repoName: repoName,
+					forks,
+					subscribers_count,
+				});
+			})
+			.then(() => {
+				this.setState({ incorrectValue: false });
+				this.setState({ inputValue: "" });
+				this.props.sortingList();
+			});
 	};
 
 	handleCLEAR = () => {
@@ -57,7 +68,7 @@ class EntryField extends React.Component {
 EntryField.propTypes = {
 	ADD_repos: PropTypes.func,
 	CLEAR_repos: PropTypes.func,
-	sortingBy: PropTypes.func,
+	sortingList: PropTypes.func,
 };
 
 export default EntryField;

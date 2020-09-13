@@ -1,28 +1,23 @@
 import { connect } from "react-redux";
 import EntryField from "./EntryField";
-import { actionTypes } from "../../../redux/actionTypes";
-
-const mapStateToProps = (globalState) => {
-	return { sortBy: globalState.sortBy };
-};
+import {
+	REPOS_LIST_ADD,
+	REPOS_LIST_CLEAR,
+	SORTING_LIST,
+} from "../../../redux/constants";
+// import { } from "../../../redux/constants";
 
 const mapDispatchToProps = {
 	ADD_repos: (payload) => ({
-		type: actionTypes.REPOS_LIST_ADD,
+		type: REPOS_LIST_ADD,
 		payload,
 	}),
 	CLEAR_repos: () => ({
-		type: actionTypes.REPOS_LIST_CLEAR,
+		type: REPOS_LIST_CLEAR,
 	}),
-	sortingBy: (sortBy) => {
-		let sortedBy =
-			sortBy === "forks"
-				? actionTypes.SORTING_LIST_BY_FORKS
-				: actionTypes.SORTING_LIST_BY_SUBSCRIBERS_COUNT;
-		return {
-			type: sortedBy,
-		};
-	},
+	sortingList: () => ({
+		type: SORTING_LIST,
+	}),
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EntryField);
+export default connect(undefined, mapDispatchToProps)(EntryField);
