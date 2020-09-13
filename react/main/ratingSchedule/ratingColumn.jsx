@@ -18,6 +18,8 @@ subscribers_count: ${props.value.subscribers_count}`}
 }
 
 RatingColumn.propTypes = {
+	keyValue: PropTypes.string,
+	ratingPosition: PropTypes.number,
 	value: PropTypes.object,
 	heightRating: PropTypes.number,
 	key: PropTypes.string,

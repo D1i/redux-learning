@@ -39,7 +39,7 @@ export const URLReposList = (
 			} else {
 				return {
 					...state,
-					list: [...state.list].sort(comparison("subscribers")),
+					list: [...state.list].sort(comparison("subscribers_count")),
 				};
 			}
 		case SET_SORTING_TYPE_FORKS:

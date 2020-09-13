@@ -14,6 +14,11 @@ class EntryField extends React.Component {
 		this.setState({ inputValue: value });
 	};
 
+	clearField = () => {
+		this.setState({ incorrectValue: false });
+		this.setState({ inputValue: "" });
+	};
+
 	handleADD = () => {
 		if (
 			this.state.inputValue.length < 3 ||
@@ -22,25 +27,11 @@ class EntryField extends React.Component {
 			this.setState({ incorrectValue: true });
 			return;
 		}
-		githubAPIRequest(this.state.inputValue)
-			.then(({ forks, subscribers_count }) => {
-				let repoName = this.state.inputValue;
-				if (forks === undefined) {
-					repoName = `${repoName} | Такого репозитория не существует`;
-					forks = 0;
-					subscribers_count = 0;
-				}
-				this.props.ADD_repos({
-					repoName: repoName,
-					forks,
-					subscribers_count,
-				});
-			})
-			.then(() => {
-				this.setState({ incorrectValue: false });
-				this.setState({ inputValue: "" });
-				this.props.sortingList();
-			});
+		this.props.ADD_repos({
+			value: githubAPIRequest(this.state.inputValue),
+			repoName: this.state.inputValue,
+			clearField: this.clearField,
+		});
 	};
 
 	handleCLEAR = () => {
