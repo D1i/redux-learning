@@ -44,20 +44,6 @@ export const URLReposList = (
 					return 0;
 				}),
 			};
-		case SORTBY_SUBSCRIBRES:
-			return {
-				...state,
-				list: [...state.list].sort((a, b) => {
-					if (a.subscribers_count > b.subscribers_count) {
-						return -1;
-					}
-					if (a.subscribers_count < b.subscribers_count) {
-						return 1;
-					}
-
-					return 0;
-				}),
-			};
 		case SORTING_LIST:
 			if (state.sortingType === SORTBY_FORKS) {
 				return {
