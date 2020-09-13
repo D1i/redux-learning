@@ -30,20 +30,6 @@ export const URLReposList = (
 			};
 		case REPOS_LIST_CLEAR:
 			return { ...state, list: [] };
-		case SORTBY_FORKS:
-			return {
-				...state,
-				list: [...state.list].sort((a, b) => {
-					if (a.forks > b.forks) {
-						return -1;
-					}
-					if (a.forks < b.forks) {
-						return 1;
-					}
-
-					return 0;
-				}),
-			};
 		case SORTING_LIST:
 			if (state.sortingType === SORTBY_FORKS) {
 				return {
